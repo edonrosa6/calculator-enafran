@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "nombre": "TE 3-ML"
+  },
+  {
+    "id": 2,
+    "nombre": "TE 500"
+  },
+  {
+    "id": 3,
+    "nombre": "TE 800"
+  },
+  {
+    "id": 4,
+    "nombre": "TE 1000"
+  },
+  {
+    "id": 5,
+    "nombre": "TE 2000"
+  },
+  {
+    "id": 6,
+    "nombre": "TE 3000"
+  },
+  {
+    "id": 7,
+    "nombre": "TE 50"
+  },
+  {
+    "id": 8,
+    "nombre": "TE 70"
+  }
+]

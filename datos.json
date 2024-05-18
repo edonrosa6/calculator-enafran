@@ -1,0 +1,65 @@
+[
+  {
+    "id": "marteleteTE3ML",
+    "nombre": "Martelete TE 3-ML",
+    "acordo": 140.56,
+    "desconto7": 123.69,
+    "desconto20": 119.48
+  },
+  {
+    "id": "rompedorTE500",
+    "nombre": "Rompedor TE 500",
+    "acordo": 239.20,
+    "desconto7": 239.20,
+    "desconto20": 239.20
+  },
+  {
+    "id": "rompedorTE700",
+    "nombre": "Rompedor TE 700",
+    "acordo": 350.90,
+    "desconto7": 333.36,
+    "desconto20": 326.34
+  },
+  {
+    "id": "rompedorTE800",
+    "nombre": "Rompedor TE 800",
+    "acordo": 375.06,
+    "desconto7": 356.31,
+    "desconto20": 348.81
+  },
+  {
+    "id": "rompedorTE1000",
+    "nombre": "Rompedor TE 1000",
+    "acordo": 480.76,
+    "desconto7": 456.72,
+    "desconto20": 447.11
+  }, 
+  {
+    "id": "rompedorTE2000",
+    "nombre": "Rompedor TE 2000",
+    "acordo": 635.66,
+    "desconto7": 584.81,
+    "desconto20": 572.09
+  }, 
+  {
+    "id": "rompedorTE3000",
+    "nombre": "Rompedor TE 3000",
+    "acordo": 820.60,
+    "desconto7": 754.95,
+    "desconto20": 738.54
+  },
+  {
+    "id": "combinadoTE50",
+    "nombre": "Combinado TE 50",
+    "acordo": 534.55,
+    "desconto7": 470.40,
+    "desconto20": 454.37
+  },
+  {
+    "id": "combinadoTE70",
+    "nombre": "Combinado TE 70",
+    "acordo": 628.03,
+    "desconto7": 552.67,
+    "desconto20": 533.83
+  }
+]

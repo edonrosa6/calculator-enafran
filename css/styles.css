@@ -1,0 +1,28 @@
+:root {
+  --primaryColor: #d1051e;
+}
+
+.text-main {
+  color: var(--primaryColor);
+}
+
+.btn-main {
+  background-color: var(--primaryColor);
+  color: #fff;
+}
+
+.btn-main:hover {
+  color: #fff;
+}
+
+.bg-main {
+  background-color: gray!important;
+}
+
+.bg-yellow {
+  background-color: rgb(199, 199, 40);
+}
+
+.total-minimo {
+  width: 150px;
+}
