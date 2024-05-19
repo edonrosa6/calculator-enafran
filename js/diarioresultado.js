@@ -52,14 +52,14 @@ function generarTabla(taxasOcupacao) {
               (item) => `
               <tr>
                   <td>${item.nombre}</td>
-                  <td>R$ ${item.valorDiarioTotal.toFixed(2)}</td>
-                  <td>R$ ${item.valorSemanalTotal.toFixed(2)}</td>
-                  <td>R$ ${item.valorQuincenalTotal.toFixed(2)}</td>
-                  <td>R$ ${item.valorMensualTotal.toFixed(2)}</td>
-                  <td>R$ ${item.sumaTotal.toFixed(2)}</td>
-                  <td>R$ ${(item.sumaTotal - item.acordo).toFixed(2)}</td>
-                  <td>R$ ${(item.sumaTotal - item.desconto7).toFixed(2)}</td>
-                  <td>R$ ${(item.sumaTotal - item.desconto20).toFixed(2)}</td>
+                  <td>${item.valorDiarioTotal.toFixed(2)}</td>
+                  <td>${item.valorSemanalTotal.toFixed(2)}</td>
+                  <td>${item.valorQuincenalTotal.toFixed(2)}</td>
+                  <td>${item.valorMensualTotal.toFixed(2)}</td>
+                  <td>${item.sumaTotal.toFixed(2)}</td>
+                  <td>${(item.sumaTotal - item.acordo).toFixed(2)}</td>
+                  <td>${(item.sumaTotal - item.desconto7).toFixed(2)}</td>
+                  <td>${(item.sumaTotal - item.desconto20).toFixed(2)}</td>
               </tr>
           `
             )
