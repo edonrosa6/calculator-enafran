@@ -31,7 +31,7 @@
 .table td:first-child {
   position: sticky;
   left: 0;
-  background: #fff;
+  background: #f7f7f7;
   z-index: 1;
   /* Ajustar el ancho de la primera columna */
   width: 150px; /* Cambia este valor según tus necesidades */

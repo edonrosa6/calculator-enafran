@@ -74,11 +74,11 @@ function generarTabla2(taxasOcupacao) {
       </tbody>
       <tfoot>
         <tr class="bg-yellow fw-bold">
-            <td>Total</td>
-            <td id="totalColumna1"></td>
-            <td id="totalColumna2"></td>
-            <td id="totalColumna3"></td>
-            <td id="totalColumna4"></td>
+          <td>Total</td>
+          <td id="totalColumna1"></td>
+          <td id="totalColumna2"></td>
+          <td id="totalColumna3"></td>
+          <td id="totalColumna4"></td>
         </tr>
       </tfoot>
       </table>
@@ -115,16 +115,16 @@ function sumarTotales() {
   // Actualizar los elementos del pie de tabla con los totales
   document.getElementById(
     "totalColumna1"
-  ).textContent = `R$ ${totalColumna1.toFixed(2)}`;
+  ).textContent = `${totalColumna1.toFixed(2)}`;
   document.getElementById(
     "totalColumna2"
-  ).textContent = `R$ ${totalColumna2.toFixed(2)}`;
+  ).textContent = `${totalColumna2.toFixed(2)}`;
   document.getElementById(
     "totalColumna3"
-  ).textContent = `R$ ${totalColumna3.toFixed(2)}`;
+  ).textContent = `${totalColumna3.toFixed(2)}`;
   document.getElementById(
     "totalColumna4"
-  ).textContent = `R$ ${totalColumna4.toFixed(2)}`;
+  ).textContent = `${totalColumna4.toFixed(2)}`;
 }
 
 document.addEventListener("DOMContentLoaded", sumarTotales);
