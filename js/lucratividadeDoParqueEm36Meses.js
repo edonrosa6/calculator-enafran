@@ -47,26 +47,26 @@ function generarTabla2(taxasOcupacao) {
               (item) => `
               <tr>
                   <td>${item.nombre}</td>
-                  <td>R$ ${
+                  <td>${(
                     (item.sumaTotal - item.acordo).toFixed(2) *
                     36 *
                     item.minimo7
-                  }</td>
-                  <td>R$ ${
+                  ).toFixed(2)}</td>
+                  <td>${(
                     (item.sumaTotal - item.desconto7).toFixed(2) *
                     36 *
                     item.minimo7
-                  }</td>
-                  <td>R$ ${
+                  ).toFixed(2)}</td>
+                  <td>${(
                     (item.sumaTotal - item.acordo).toFixed(2) *
                     36 *
                     item.minimo20
-                  }</td>
-                  <td>R$ ${
+                  ).toFixed(2)}</td>
+                  <td>${(
                     (item.sumaTotal - item.desconto20).toFixed(2) *
                     36 *
                     item.minimo20
-                  }</td>
+                  ).toFixed(2)}</td>
               </tr>
           `
             )
