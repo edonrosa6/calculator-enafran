@@ -66,7 +66,7 @@ function generarTabla2(taxasOcupacao) {
           ).toFixed(2);
 
           const clase =
-            valor1 > 0 || valor2 > 0 || valor3 > 0 || valor4 > 0
+            valor1 != 0 || valor2 != 0 || valor3 != 0 || valor4 != 0
               ? "bg-gray"
               : "";
 
