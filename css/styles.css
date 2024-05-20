@@ -40,3 +40,19 @@
 .table th:first-child {
   z-index: 2; /* Asegura que el encabezado esté sobre las celdas de datos */
 }
+
+.border-left {
+  border-left: 1px solid #000;
+}
+
+.bg-gray {
+  background-color: #ccc;
+}
+
+.periodos {
+  border-right: 1px solid #000; /* Agrega una línea de separación a la derecha */
+}
+
+.descuentos {
+  border-left: 1px solid #000; /* Agrega una línea de separación a la izquierda */
+}

@@ -34,36 +34,53 @@ function generarTabla(taxasOcupacao) {
       <table class="table">
       <thead>
           <tr>
-              <th scope="col"></th>
-              <th scope="col">Diario</th>
-              <th scope="col">Semanal</th>
-              <th scope="col">Quinzenal</th>
-              <th scope="col">Mensal</th>
-              <th scope="col">Valor</th>
-              <th scope="col">Acordo</th>
-              <th scope="col">Desc 7 ferr</th>
-              <th scope="col">Desc 20 ferr</th>
-
+              <th></th>
+              <th colspan="5" class="periodos text-center h5 bg-main text-white">Receita ponderada por ferramenta</th>
+              <th colspan="3" class="descuentos text-center h5 bg-main text-white">Lucratividade mensal por ferramente</th>
+          </tr>
+          <tr>
+              <th></th>
+              <th>Diario</th>
+              <th>Semanal</th>
+              <th>Quinzenal</th>
+              <th>Mensal</th>
+              <th>Valor</th>
+              <th class="border-left">Acordo</th>
+              <th>Desc 7 ferr</th>
+              <th>Desc 20 ferr</th>
           </tr>
       </thead>
       <tbody>
-          ${taxasOcupacao
-            .map(
-              (item) => `
-              <tr>
-                  <td>${item.nombre}</td>
-                  <td>${item.valorDiarioTotal.toFixed(2)}</td>
-                  <td>${item.valorSemanalTotal.toFixed(2)}</td>
-                  <td>${item.valorQuincenalTotal.toFixed(2)}</td>
-                  <td>${item.valorMensualTotal.toFixed(2)}</td>
-                  <td>${item.sumaTotal.toFixed(2)}</td>
-                  <td>${(item.sumaTotal - item.acordo).toFixed(2)}</td>
-                  <td>${(item.sumaTotal - item.desconto7).toFixed(2)}</td>
-                  <td>${(item.sumaTotal - item.desconto20).toFixed(2)}</td>
-              </tr>
-          `
-            )
-            .join("")}
+        ${taxasOcupacao
+          .map((item) => {
+            const acordo = (item.sumaTotal - item.acordo).toFixed(2);
+            const desc7ferr = (item.sumaTotal - item.desconto7).toFixed(2);
+            const desc20ferr = (item.sumaTotal - item.desconto20).toFixed(2);
+
+            const isBgRemarked =
+              parseFloat(acordo) > 0 ||
+              parseFloat(desc7ferr) > 0 ||
+              parseFloat(desc20ferr) > 0 ||
+              parseFloat(item.valorDiarioTotal) > 0 ||
+              parseFloat(item.valorSemanalTotal) > 0 ||
+              parseFloat(item.valorQuincenalTotal) > 0 ||
+              parseFloat(item.valorMensualTotal) > 0;
+
+            return `
+            <tr class="${isBgRemarked ? "bg-gray" : ""}">
+              <td>${item.nombre}</td>
+              <td>${item.valorDiarioTotal.toFixed(2)}</td>
+              <td>${item.valorSemanalTotal.toFixed(2)}</td>
+              <td>${item.valorQuincenalTotal.toFixed(2)}</td>
+              <td>${item.valorMensualTotal.toFixed(2)}</td>
+              <td>${item.sumaTotal.toFixed(2)}</td>
+              <td class="border-left">${acordo < 0 ? "0.00" : acordo}</td>
+              <td>${desc7ferr < 0 ? "0.00" : desc7ferr}</td>
+              <td>${desc20ferr < 0 ? "0.00" : desc20ferr}</td>
+            </tr>
+            `;
+          })
+          .join("")}
       </tbody>
       </table>
   `;

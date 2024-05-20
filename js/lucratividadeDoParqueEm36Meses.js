@@ -31,58 +31,68 @@ function calcularValores2(
 
 function generarTabla2(taxasOcupacao) {
   return `
-      <table class="table" id="table36meses">
-      <thead>
-          <tr>
-              <th scope="col"></th>
-              <th scope="col">Acordo</th>
-              <th scope="col">Desc 7 ferr</th>
-              <th scope="col">Acordo</th>
-              <th scope="col">Desc 20 ferr</th>
-          </tr>
-      </thead>
-      <tbody>
-          ${taxasOcupacao
-            .map(
-              (item) => `
-              <tr>
-                  <td>${item.nombre}</td>
-                  <td>${(
-                    (item.sumaTotal - item.acordo).toFixed(2) *
-                    36 *
-                    item.minimo7
-                  ).toFixed(2)}</td>
-                  <td>${(
-                    (item.sumaTotal - item.desconto7).toFixed(2) *
-                    36 *
-                    item.minimo7
-                  ).toFixed(2)}</td>
-                  <td>${(
-                    (item.sumaTotal - item.acordo).toFixed(2) *
-                    36 *
-                    item.minimo20
-                  ).toFixed(2)}</td>
-                  <td>${(
-                    (item.sumaTotal - item.desconto20).toFixed(2) *
-                    36 *
-                    item.minimo20
-                  ).toFixed(2)}</td>
-              </tr>
-          `
-            )
-            .join("")}
-      </tbody>
-      <tfoot>
-        <tr class="bg-yellow fw-bold">
-          <td>Total</td>
-          <td id="totalColumna1"></td>
-          <td id="totalColumna2"></td>
-          <td id="totalColumna3"></td>
-          <td id="totalColumna4"></td>
-        </tr>
-      </tfoot>
-      </table>
-  `;
+  <table class="table" id="table36meses">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Acordo</th>
+        <th scope="col">Desc 7 ferr</th>
+        <th scope="col">Acordo</th>
+        <th scope="col">Desc 20 ferr</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${taxasOcupacao
+        .map((item) => {
+          const valor1 = (
+            (item.sumaTotal - item.acordo) *
+            36 *
+            item.minimo7
+          ).toFixed(2);
+          const valor2 = (
+            (item.sumaTotal - item.desconto7) *
+            36 *
+            item.minimo7
+          ).toFixed(2);
+          const valor3 = (
+            (item.sumaTotal - item.acordo) *
+            36 *
+            item.minimo20
+          ).toFixed(2);
+          const valor4 = (
+            (item.sumaTotal - item.desconto20) *
+            36 *
+            item.minimo20
+          ).toFixed(2);
+
+          const clase =
+            valor1 > 0 || valor2 > 0 || valor3 > 0 || valor4 > 0
+              ? "bg-gray"
+              : "";
+
+          return `
+            <tr class="${clase}">
+              <td>${item.nombre}</td>
+              <td>${valor1}</td>
+              <td>${valor2}</td>
+              <td>${valor3}</td>
+              <td>${valor4}</td>
+            </tr>
+          `;
+        })
+        .join("")}
+    </tbody>
+    <tfoot>
+      <tr class="bg-yellow fw-bold">
+        <td>Total</td>
+        <td id="totalColumna1"></td>
+        <td id="totalColumna2"></td>
+        <td id="totalColumna3"></td>
+        <td id="totalColumna4"></td>
+      </tr>
+    </tfoot>
+  </table>
+`;
 }
 
 function sumarTotales() {
