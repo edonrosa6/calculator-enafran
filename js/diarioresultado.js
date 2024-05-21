@@ -51,39 +51,49 @@ function generarTabla(taxasOcupacao) {
           </tr>
       </thead>
       <tbody>
-        ${taxasOcupacao
-          .map((item) => {
-            const acordo = (item.sumaTotal - item.acordo).toFixed(2);
-            const desc7ferr = (item.sumaTotal - item.desconto7).toFixed(2);
-            const desc20ferr = (item.sumaTotal - item.desconto20).toFixed(2);
+      ${taxasOcupacao
+        .map((item) => {
+          const acordo = (item.sumaTotal - item.acordo).toFixed(2);
+          const desc7ferr = (item.sumaTotal - item.desconto7).toFixed(2);
+          const desc20ferr = (item.sumaTotal - item.desconto20).toFixed(2);
 
-            const isBgRemarked =
-              parseFloat(acordo) > 0 ||
-              parseFloat(desc7ferr) > 0 ||
-              parseFloat(desc20ferr) > 0 ||
-              parseFloat(item.valorDiarioTotal) > 0 ||
-              parseFloat(item.valorSemanalTotal) > 0 ||
-              parseFloat(item.valorQuincenalTotal) > 0 ||
-              parseFloat(item.valorMensualTotal) > 0;
+          const isBgRemarked =
+            parseFloat(acordo) > 0 ||
+            parseFloat(desc7ferr) > 0 ||
+            parseFloat(desc20ferr) > 0 ||
+            parseFloat(item.valorDiarioTotal) > 0 ||
+            parseFloat(item.valorSemanalTotal) > 0 ||
+            parseFloat(item.valorQuincenalTotal) > 0 ||
+            parseFloat(item.valorMensualTotal) > 0;
 
-            return `
-            <tr class="${isBgRemarked ? "bg-gray" : ""}">
-              <td>${item.nombre}</td>
-              <td>${item.valorDiarioTotal.toFixed(2)}</td>
-              <td>${item.valorSemanalTotal.toFixed(2)}</td>
-              <td>${item.valorQuincenalTotal.toFixed(2)}</td>
-              <td>${item.valorMensualTotal.toFixed(2)}</td>
-              <td>${item.sumaTotal.toFixed(2)}</td>
-              <td class="border-left">${acordo < 0 ? "0.00" : acordo}</td>
-              <td>${desc7ferr < 0 ? "0.00" : desc7ferr}</td>
-              <td>${desc20ferr < 0 ? "0.00" : desc20ferr}</td>
-            </tr>
-            `;
-          })
-          .join("")}
+          return `
+          <tr class="${isBgRemarked ? "bg-gray" : ""}">
+            <td>${item.nombre}</td>
+            <td>${formatNumber(item.valorDiarioTotal)}</td>
+            <td>${formatNumber(item.valorSemanalTotal)}</td>
+            <td>${formatNumber(item.valorQuincenalTotal)}</td>
+            <td>${formatNumber(item.valorMensualTotal)}</td>
+            <td>${formatNumber(item.sumaTotal)}</td>
+            <td class="border-left">${formatNumber(
+              acordo < 0 ? 0 : acordo
+            )}</td>
+            <td>${formatNumber(desc7ferr < 0 ? 0 : desc7ferr)}</td>
+            <td>${formatNumber(desc20ferr < 0 ? 0 : desc20ferr)}</td>
+          </tr>
+        `;
+        })
+        .join("")}
       </tbody>
       </table>
   `;
+}
+
+function formatNumber(number) {
+  // Formateamos el número como texto con el formato brasileño
+  return parseFloat(number).toLocaleString("pt-BR", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
 }
 
 function calcularTabla() {
