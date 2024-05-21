@@ -120,11 +120,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const quantidade = parseFloat(row.querySelector("input").value);
 
     const diferencaDesconto7Ferr = quantidade * (item.acordo - item.desconto7);
-    const ferr7a36Meses = quantidade * (diferencaDesconto7Ferr * 36);
+    const ferr7a36Meses = diferencaDesconto7Ferr * 36;
 
     const diferencaDesconto20Ferr =
       quantidade * (item.acordo - item.desconto20);
-    const ferr20a36Meses = quantidade * (diferencaDesconto20Ferr * 36);
+    const ferr20a36Meses = diferencaDesconto20Ferr * 36;
 
     row.querySelectorAll("td")[2].textContent =
       diferencaDesconto7Ferr.toLocaleString("pt-BR", {
