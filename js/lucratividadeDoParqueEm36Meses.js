@@ -105,36 +105,58 @@ function sumarTotales() {
   let totalColumna3 = 0;
   let totalColumna4 = 0;
 
+  const formatNumber = (number) => {
+    return (number / 100).toLocaleString("pt-BR", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    });
+  };
+
   for (let i = 0; i < filas2.length; i++) {
     const celdas = filas2[i].getElementsByTagName("td");
 
-    totalColumna1 += parseFloat(
-      celdas[1].textContent.replace("R$ ", "").replace(",", ".")
-    );
-    totalColumna2 += parseFloat(
-      celdas[2].textContent.replace("R$ ", "").replace(",", ".")
-    );
-    totalColumna3 += parseFloat(
-      celdas[3].textContent.replace("R$ ", "").replace(",", ".")
-    );
-    totalColumna4 += parseFloat(
-      celdas[4].textContent.replace("R$ ", "").replace(",", ".")
-    );
+    totalColumna1 +=
+      parseFloat(
+        celdas[1].textContent
+          .replace("R$ ", "")
+          .replace(/\./g, "")
+          .replace(",", ".")
+      ) / 100;
+    totalColumna2 +=
+      parseFloat(
+        celdas[2].textContent
+          .replace("R$ ", "")
+          .replace(/\./g, "")
+          .replace(",", ".")
+      ) / 100;
+    totalColumna3 +=
+      parseFloat(
+        celdas[3].textContent
+          .replace("R$ ", "")
+          .replace(/\./g, "")
+          .replace(",", ".")
+      ) / 100;
+    totalColumna4 +=
+      parseFloat(
+        celdas[4].textContent
+          .replace("R$ ", "")
+          .replace(/\./g, "")
+          .replace(",", ".")
+      ) / 100;
   }
 
-  // Actualizar los elementos del pie de tabla con los totales
-  document.getElementById(
-    "totalColumna1"
-  ).textContent = `${totalColumna1.toFixed(2)}`;
-  document.getElementById(
-    "totalColumna2"
-  ).textContent = `${totalColumna2.toFixed(2)}`;
-  document.getElementById(
-    "totalColumna3"
-  ).textContent = `${totalColumna3.toFixed(2)}`;
-  document.getElementById(
-    "totalColumna4"
-  ).textContent = `${totalColumna4.toFixed(2)}`;
+  document.getElementById("totalColumna1").textContent = formatNumber(
+    totalColumna1 * 100
+  );
+  document.getElementById("totalColumna2").textContent = formatNumber(
+    totalColumna2 * 100
+  );
+  document.getElementById("totalColumna3").textContent = formatNumber(
+    totalColumna3 * 100
+  );
+  document.getElementById("totalColumna4").textContent = formatNumber(
+    totalColumna4 * 100
+  );
 }
 
 document.addEventListener("DOMContentLoaded", sumarTotales);
