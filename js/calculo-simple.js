@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const cellQuantidade = document.createElement("td");
     const inputQuantidade = document.createElement("input");
     inputQuantidade.type = "number";
-    inputQuantidade.value = 1; // Valor predeterminado
+    inputQuantidade.value = 0; // Valor predeterminado
     inputQuantidade.addEventListener("change", function () {
       recalcularValores(row, item);
     });
