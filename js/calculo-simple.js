@@ -85,32 +85,27 @@ document.addEventListener("DOMContentLoaded", function () {
     const cellQuantidade = document.createElement("td");
     const inputQuantidade = document.createElement("input");
     inputQuantidade.type = "number";
-    inputQuantidade.value = 0; // Valor predeterminado
+    inputQuantidade.value = 0; // Valor predeterminado de 0
     inputQuantidade.addEventListener("change", function () {
       recalcularValores(row, item);
     });
     cellQuantidade.appendChild(inputQuantidade);
     row.appendChild(cellQuantidade);
 
-    const diferencaDesconto7Ferr = item.acordo - item.desconto7;
     const cellDiferencaDesconto7Ferr = document.createElement("td");
-    cellDiferencaDesconto7Ferr.textContent = diferencaDesconto7Ferr.toFixed(2);
+    cellDiferencaDesconto7Ferr.textContent = "0.00"; // Valor inicial de 0
     row.appendChild(cellDiferencaDesconto7Ferr);
 
-    const ferr7a36Meses = diferencaDesconto7Ferr * 36;
     const cellFerr7a36Meses = document.createElement("td");
-    cellFerr7a36Meses.textContent = ferr7a36Meses.toFixed(2);
+    cellFerr7a36Meses.textContent = "0.00"; // Valor inicial de 0
     row.appendChild(cellFerr7a36Meses);
 
-    const diferencaDesconto20Ferr = item.acordo - item.desconto20;
     const cellDiferencaDesconto20Ferr = document.createElement("td");
-    cellDiferencaDesconto20Ferr.textContent =
-      diferencaDesconto20Ferr.toFixed(2);
+    cellDiferencaDesconto20Ferr.textContent = "0.00"; // Valor inicial de 0
     row.appendChild(cellDiferencaDesconto20Ferr);
 
-    const ferr20a36Meses = diferencaDesconto20Ferr * 36;
     const cellFerr20a36Meses = document.createElement("td");
-    cellFerr20a36Meses.textContent = ferr20a36Meses.toFixed(2);
+    cellFerr20a36Meses.textContent = "0.00"; // Valor inicial de 0
     row.appendChild(cellFerr20a36Meses);
 
     tbody.appendChild(row);
@@ -132,7 +127,9 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     row.querySelectorAll("td")[3].textContent = ferr7a36Meses.toLocaleString(
       "pt-BR",
-      { minimumFractionDigits: 2 }
+      {
+        minimumFractionDigits: 2,
+      }
     );
     row.querySelectorAll("td")[4].textContent =
       diferencaDesconto20Ferr.toLocaleString("pt-BR", {
@@ -140,7 +137,9 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     row.querySelectorAll("td")[5].textContent = ferr20a36Meses.toLocaleString(
       "pt-BR",
-      { minimumFractionDigits: 2 }
+      {
+        minimumFractionDigits: 2,
+      }
     );
 
     calcularTotale();
@@ -151,44 +150,40 @@ document.addEventListener("DOMContentLoaded", function () {
     let totalFerr20a36Meses = 0;
 
     tbody.querySelectorAll("tr").forEach((row) => {
-      // Obtener el valor numérico de la celda 3 (Ferramenta 7% a 36 Meses)
       const valorFerr7 =
         parseFloat(
           row
             .querySelectorAll("td")[3]
-            .textContent.replace(",", ".")
-            .replace(/\./g, "")
+            .textContent.replace(".", "")
             .replace(",", ".")
         ) || 0;
-      // Obtener el valor numérico de la celda 5 (Ferramenta 20% a 36 Meses)
       const valorFerr20 =
         parseFloat(
           row
             .querySelectorAll("td")[5]
-            .textContent.replace(",", ".")
-            .replace(/\./g, "")
+            .textContent.replace(".", "")
             .replace(",", ".")
         ) || 0;
 
-      // Sumar los valores a los totales correspondientes
       totalFerr7a36Meses += valorFerr7;
       totalFerr20a36Meses += valorFerr20;
     });
 
-    // Actualizar los elementos del DOM con los totales formateados correctamente
-    totalFerr7a36MesesElem.textContent = (
-      totalFerr7a36Meses / 100
-    ).toLocaleString("pt-BR", {
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    });
+    totalFerr7a36MesesElem.textContent = totalFerr7a36Meses.toLocaleString(
+      "pt-BR",
+      {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      }
+    );
 
-    totalFerr20a36MesesElem.textContent = (
-      totalFerr20a36Meses / 100
-    ).toLocaleString("pt-BR", {
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    });
+    totalFerr20a36MesesElem.textContent = totalFerr20a36Meses.toLocaleString(
+      "pt-BR",
+      {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      }
+    );
   }
 
   calcularTotale();
